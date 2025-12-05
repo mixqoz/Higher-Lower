@@ -81,3 +81,40 @@ hr {
 	justify-content: center;
 	align-items: center;
 }
+
+.keyboard-row {
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.key-tile {
+    width: 36px;
+    height: 40px;
+    margin: 1px;
+    border: 1px solid #787c7e;
+
+    /* Text */
+	color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.enter-key-tile {
+    width: 74px;
+    height: 40px;
+    margin: 1px;
+    border: 1px solid #787c7e;
+
+    /* Text */
+	color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
