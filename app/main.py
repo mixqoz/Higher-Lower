@@ -6,10 +6,13 @@ app.config["DEBUG"] = True
 def index():
     return render_template("main.html")
 
-@app.route("/")
+@app.route("/quiz")
 def quiz():
     return render_template("quiz.html")
 
-@app.route("/")
+@app.route("/minigames")
 def minigames():
     return render_template("minigame.html")
+
+if __name__ == "__main__":
+    app.run()

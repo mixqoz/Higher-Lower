@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Games!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='minigames/minigames.css') }}">
+</head>
+<body>
+    <div class="gameBtns">
+		<button id="wordle">Wordle</button>
+	</div>
+
+
+    <script>
+		document.getElementById("startBtn").onclick = function () {
+			window.location.href = "{{ url_for('signup') }}";
+		};
+    </script>
+</body>
+</html>
