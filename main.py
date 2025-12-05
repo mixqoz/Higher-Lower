@@ -12,7 +12,12 @@ def quiz():
 
 @app.route("/minigames")
 def minigames():
-    return render_template("minigame.html")
+    return render_template("minigames/mainMinigames.html")
+
+@app.route("/minigames/wordle")
+def wordle():
+    return render_template("minigames/wordle.html")
+
 
 if __name__ == "__main__":
     app.run()
