@@ -5,3 +5,11 @@ app.config["DEBUG"] = True
 @app.route("/")
 def index():
     return render_template("main.html")
+
+@app.route("/")
+def quiz():
+    return render_template("quiz.html")
+
+@app.route("/")
+def minigames():
+    return render_template("minigame.html")
