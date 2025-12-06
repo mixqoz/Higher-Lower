@@ -17,11 +17,38 @@ body {
     height: 100%;
 }
 
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+}
+
 .title {
+	position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: clamp(24px, 6vw, 48px);
+    letter-spacing: 2px;
+}
+
+#backBtn {
 	color: white;
+	font-size: clamp(14px, 2vw, 20px);
+	background-color: #787c7e;
+	padding: 10px;
+	width: fit-content;
 	text-align: center;
-	font-size: 48px;
-	letter-spacing: 2px;
+	justify-content: left;
+	align-items: left;
+	border-width: 1px;
+	border-radius: 5px;
+	margin: 2%;
+	margin-top: 3%;
+	margin-right: auto;
+	flex-wrap: wrap;
+	transform: translateY(-50%);
 }
 
 hr {
@@ -44,11 +71,12 @@ hr {
 	width: 60px;
 	height: 60px;
 	margin: 2.5px;
+	aspect-ratio: 1 / 1;
 
 	/* Text */
 
 	color: white;
-	font-size: 45px;
+	font-size: clamp(20px, 7vw, 45px);
 	font-weight: bold;
 	display: flex;
 	justify-content: center;
@@ -80,6 +108,7 @@ hr {
 	text-align: center;
 	justify-content: center;
 	align-items: center;
+	font-size: clamp(16px, 3vw, 24px);
 }
 
 .keyboard-row {

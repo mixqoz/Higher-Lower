@@ -4,18 +4,27 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script defer src="{{ url_for('static', filename='minigames/wordle.js') }}"></script>
-	<link rel="stylesheet" href="{{ url_for('static', filename='minigames/minigames.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='minigames/wordle.css') }}">
 	<title>Wordle</title>
 </head>
 <body>
-	<h1 class="title">Daily Wordle</h1>
+	<header>
+		<button id="backBtn">Back</button>
+		<h1 class="title">Daily Wordle</h1>
+	</header>
+	
 	<hr>
 	<br>
 
-	<div id="board">
-	</div>
+	<div id="board"></div>
+	<p id="answer"></p>
+
 	<br>
 
-	<h1 id="answer"></h1>
+	<script>
+		document.getElementById("backBtn").onclick = function () {
+			window.location.href = "{{ url_for('minigames') }}";
+		};
+	</script>
 </body>
-</html>
+</html>ti
