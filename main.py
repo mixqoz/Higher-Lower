@@ -21,6 +21,9 @@ def minigames():
 def wordle():
     return render_template("minigames/wordle.html")
 
+@app.route("/minigames/memory")
+def memory():
+    return render_template("minigames/memory.html")
 
 if __name__ == "__main__":
     app.run()

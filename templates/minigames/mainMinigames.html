@@ -9,13 +9,20 @@
 <body>
     <div class="gameBtns">
 		  <button id="wordle">Wordle</button>
+      <button id="memory">Memory</button>
 	  </div>
 
 
     <script>
-		document.getElementById("wordle").onclick = function () {
-			window.location.href = "{{ url_for('wordle') }}";
-		};
+      // Directs you to the Wordle page
+      document.getElementById("wordle").onclick = function () {
+        window.location.href = "{{ url_for('wordle') }}";
+      };
+
+      // Directs you to the Memory page
+      document.getElementById("memory").onclick = function () {
+			window.location.href = "{{ url_for('memory') }}";
+		  };
     </script>
 </body>
 </html>
