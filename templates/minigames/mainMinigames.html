@@ -4,16 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Games!</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='minigames/minigames.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='minigames/minigamesMain.css') }}">
 </head>
 <body>
+    <header>
+      <button id="backBtn">Back</button>
+      <h1 class="title">Play some of our minigames!</h1>
+    </header>
+
+    <hr>
+    <br>
+
     <div class="gameBtns">
 		  <button id="wordle">Wordle</button>
       <button id="memory">Memory</button>
 	  </div>
 
-
     <script>
+      document.getElementById("backBtn").onclick = function () {
+			window.location.href = "{{ url_for('minigames') }}";
+	  	};
+      
       // Directs you to the Wordle page
       document.getElementById("wordle").onclick = function () {
         window.location.href = "{{ url_for('wordle') }}";
