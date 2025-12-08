@@ -1,5 +1,6 @@
 # Higher-Lower
 
-# Credits
+# Credits & Inspiration
 Wordle Game functions: https://www.youtube.com/watch?v=ckjRsPaWHX8,
 https://www.youtube.com/watch?v=MM9FAV_CEkU
+Memory Game functions: https://www.youtube.com/watch?v=ZniVgo8U7ek
