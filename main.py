@@ -14,20 +14,25 @@ def quiz():
     return render_template("quiz.html")
 
 @app.route("/faq")
-def memory():
+def faq():
     return render_template("faq.html")
+
+@app.route("/guide")
+def guide():
+    return render_template("guide.html")
 
 # Minigames
 @app.route("/minigames")
 def minigames():
     return render_template("minigames/mainMinigames.html")
 
-@app.route("/minigames/wordle")
+@app.route("/wordle")
 def wordle():
     return render_template("minigames/wordle.html")
 
-@app.route("/minigames/memoryGame", endpoint="memory_game_endpoint")
-def memory():
+
+@app.route("/minigames/memoryGame")
+def memory_game():
     return render_template("minigames/memoryGame.html")
 
 if __name__ == "__main__":
