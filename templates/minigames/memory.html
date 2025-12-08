@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script defer src="{{ url_for('static', filename='minigames/memory.js') }}"></script>
 	<link rel="stylesheet" href="{{ url_for('static', filename='minigames/memory.css') }}">
 	<title>Memory</title>
 </head>
@@ -14,6 +15,68 @@
 
 	<hr>
 	<br>
+
+	<section class="memoryGame">
+		<!-- Memory Card pair 1 -->
+		<div class="memoryCard" data-framework="card1">
+			<img class="frontFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardFront.png') }}">
+			<img class="backFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardBack1.png') }}">
+		</div>
+		<div class="memoryCard" data-framework="card1">
+			<img class="frontFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardFront.png') }}">
+			<img class="backFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardBack1.png') }}">
+		</div>	
+
+		<!-- Memory Card pair 2 -->
+		<div class="memoryCard" data-framework="card2">
+			<img class="frontFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardFront.png') }}">
+			<img class="backFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardBack2.png') }}">
+		</div>
+		<div class="memoryCard" data-framework="card2">
+			<img class="frontFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardFront.png') }}">
+			<img class="backFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardBack2.png') }}">
+		</div>
+
+		<!-- Memory Card pair 1 -->
+		<div class="memoryCard" data-framework="card3">
+			<img class="frontFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardFront.png') }}">
+			<img class="backFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardBack3.png') }}">
+		</div>
+		<div class="memoryCard" data-framework="card3">
+			<img class="frontFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardFront.png') }}">
+			<img class="backFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardBack3.png') }}">
+		</div>
+
+		<!-- Memory Card pair 4 -->
+		<div class="memoryCard" data-framework="card4">
+			<img class="frontFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardFront.png') }}">
+			<img class="backFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardBack4.png') }}">
+		</div>
+		<div class="memoryCard" data-framework="card4">	
+			<img class="frontFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardFront.png') }}">
+			<img class="backFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardBack4.png') }}">
+		</div>
+
+		<!-- Memory Card pair 5 -->
+		<div class="memoryCard" data-framework="card5">
+			<img class="frontFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardFront.png') }}">
+			<img class="backFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardBack5.png') }}">
+		</div>
+		<div class="memoryCard" data-framework="card5">
+			<img class="frontFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardFront.png') }}">
+			<img class="backFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardBack5.png') }}">
+		</div>
+
+		<!-- Memory Card pair 6 -->
+		<div class="memoryCard" data-framework="card6">
+			<img class="frontFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardFront.png') }}">
+			<img class="backFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardBack6.png') }}">
+		</div>
+		<div class="memoryCard" data-framework="card6">
+			<img class="frontFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardFront.png') }}">
+			<img class="backFace" src="{{ url_for('static', filename='IMGS/PlayingCards/cardBack6.png') }}">
+		</div>
+	</section>
 	
 	<script>
 		document.getElementById("backBtn").onclick = function () {

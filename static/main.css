@@ -122,3 +122,7 @@ img {
     justify-content: center;
     align-items: center;
 }
+ #minigamesBtn {
+    background-color: #FFC300;
+    border: 2px;
+ }
