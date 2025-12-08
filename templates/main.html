@@ -12,7 +12,9 @@
         <div class="user_profile_btn"></div>
         <div class="user_name">my name is</div>
         <div class="game_name">HIGHER or LOWER</div>
+        <a href="{{ url_for('leaderboard') }}">
         <div class="leaderboard_btn">LEADERBOARDS</div>
+        </a>
 
     </div>
 
@@ -36,7 +38,10 @@
 
             </div>
         </div>
-`   </div>
-
+    </div>
+    <div class="share_btn">SHARE your score</div>
+    <div class="score_circle">
+        <div class="score">0</div>
+    </div>
 </body>
 </html>
