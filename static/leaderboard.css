@@ -43,7 +43,7 @@ body {
     color: #000814;
     font-weight: bold;
     cursor: pointer;
-    margin-right: 5%;
+    margin: 5vw;
 }
 .parent {
     display: flex;
@@ -53,49 +53,51 @@ body {
     height: 50vh;
     margin-top: 20vh;
 }
-.gamebox {
-    background-color: #001d3d;
-    border: 2px solid #ffd60a;
-    border-radius: 10px;
-    color: #ffffff;
-    display: grid;
-    justify-content: center;
-    width: 30vw;
+.leaderboard_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20vw;
     height: 60vh;
+    background-color: #001D3D;
+    border-radius: 15px;
+    border: 5px solid #FFD60A;
+    margin: 20px;
 }
-img {
-    max-width: 100%;
-    height: auto;
-}
-.skin{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 70%;
-    object-fit: contain;    
-}
-.skin_text_box {
-    display: flex;
-    justify-content: center;
-    height: max;
-    width: max;
-    border-radius: 10px;
-    border: #ffd60a solid 2px;
-    background-color: #FFC300;
-    margin: 5vh;
-    z-index: 5;
-}
-
- #minigamesBtn, #guideBtn, #faqBtn {
-    background-color: #ffd60a;
-    border: 2px;
-    text-align: center;
+.category_box{
     justify-content: center;
     align-items: center;
-    width: 3%;
-    height: 100%;
-    border-radius: 5px;
-    overflow: hidden;
+    text-align: center;
+    width: 18vw;
+    height: 8vh;
+    background-color: #FFD60A;
+    border-radius: 10px;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+}
+ol, ul {
+    padding: 0;
+    margin: 0;
+}
+li{
     display: flex;
-    margin-right: 2%;
+    justify-content: space-between;
+    align-items: center;
+    width: 17vw;
+    height: 6vh;
+    background-color: #003566;
+    border-radius: 10px;
+    margin-bottom: 1vh;
+    padding: 0 1vw;
+}
+.name_box {
+    flex: 1;
+    text-align: left;
+    color: #ffffff;
+    font-weight: bold;
+}
+.score_box {
+    text-align: right;
+    color: #FFC300;
+    font-weight: bold;
 }

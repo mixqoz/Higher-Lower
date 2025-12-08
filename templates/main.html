@@ -21,7 +21,7 @@
     <div class="parent">
         <div class="gamebox" style="margin: 3vw;"><!-- left box -->
             <div class="skin">
-                <img src="static/IMGS/greenGloves.png" alt="">
+                <img src="{{ url_for('static', filename='IMGS/greenGloves.png') }}" alt="">
             </div>
             <div class="skin_text_box">
                 <p class="skin_text"> %price%</p>
@@ -31,13 +31,18 @@
 
         <div class="gamebox" style="margin: 3vw;"><!-- right box -->
             <div class="skin">
-                <img src="static/IMGS/greenGloves.png" alt="">
+                <img src="{{ url_for('static', filename='IMGS/greenGloves.png') }}" alt="">
             </div>
             <div class="skin_text_box">
                 <p class="skin_text"> %price%</p>
 
             </div>
         </div>
+    </div>
+    <div class="share_btn">SHARE your score</div>
+    <div class="score_circle">
+        <div class="score">0</div>
+    </div>
    </div>
 
    <script>

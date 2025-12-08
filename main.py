@@ -5,8 +5,9 @@ app.config["DEBUG"] = True
 @app.route("/")
 def index():
     return render_template("main.html")
-
-
+@app.route("/leaderboard")
+def leaderboard():
+    return render_template("leaderboard.html")
 
 @app.route("/quiz")
 def quiz():
