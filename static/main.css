@@ -86,3 +86,7 @@ img {
     margin: 5vh;
     z-index: 5;
 }
+ #minigamesBtn {
+    background-color: #FFC300;
+    border: 2px;
+ }
