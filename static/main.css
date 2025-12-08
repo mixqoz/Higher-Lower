@@ -43,7 +43,7 @@ body {
     color: #000814;
     font-weight: bold;
     cursor: pointer;
-    margin: 5vw;
+    margin-right: 5%;
 }
 .parent {
     display: flex;
@@ -86,7 +86,18 @@ img {
     margin: 5vh;
     z-index: 5;
 }
- #minigamesBtn {
-    background-color: #FFC300;
+
+
+ #minigamesBtn, #guideBtn, #faqBtn {
+    background-color: #ffd60a;
     border: 2px;
- }
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 3%;
+    height: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    margin-right: 2%;
+}

@@ -12,6 +12,10 @@ def index():
 def quiz():
     return render_template("quiz.html")
 
+@app.route("/faq")
+def memory():
+    return render_template("faq.html")
+
 # Minigames
 @app.route("/minigames")
 def minigames():
