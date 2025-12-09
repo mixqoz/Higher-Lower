@@ -5,7 +5,7 @@
 body {
     margin: 0;
     font-family: Nunito Sans, sans-serif;
-    background-color: #22252B;
+    background-color: #001d3d;
     overflow: hidden;
     padding: 0;
     width: 100%;
@@ -31,7 +31,7 @@ header {
 #backBtn {
 	color: white;
 	font-size: clamp(14px, 2vw, 20px);
-	background-color: #787c7e;
+	background-color: #ffd60a;
 	padding: 10px;
 	width: fit-content;
 	text-align: center;
@@ -48,4 +48,57 @@ header {
 
 hr {
 	width: 50%;
+}
+
+.memoryGame {
+	width: 610px;
+	height: 610px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin-left: auto;
+    margin-right: auto;
+	perspective: 1000px;
+}
+
+.memoryCard {
+	width: calc(25% - 10px);
+	height: calc(33.333% - 10px);
+	position: relative;
+	margin: 5px;
+	transform: scale(1);
+	transform-style: preserve-3d;
+	transition: transform 0.5s;
+}
+
+.memoryCard:active{
+	transform: scale(.97);
+	transition: transform 0.2s;
+}
+
+/* When the flip class is selected, rotate it */
+.memoryCard.flip {
+	transform: rotateY(180deg);
+}
+
+.frontFace {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.backFace {
+    z-index: 1;
+    transform: rotateY(180deg);
+}
+
+.frontFace,
+.backFace {
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	border-radius: 5px;
+	position: absolute;
+	border: 2px solid #787c7e;
+	backface-visibility: hidden;
 }

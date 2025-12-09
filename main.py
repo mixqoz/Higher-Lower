@@ -125,23 +125,35 @@ def item2_click():
             # Tie → no change, but treat next as random
             session.pop("next_left", None)
     return redirect(url_for("index"))
+@app.route("/leaderboard")
+def leaderboard():
+    return render_template("leaderboard.html")
 
 @app.route("/quiz")
 def quiz():
     return render_template("quiz.html")
+
+@app.route("/faq")
+def faq():
+    return render_template("faq.html")
+
+@app.route("/guide")
+def guide():
+    return render_template("guide.html")
 
 # Minigames
 @app.route("/minigames")
 def minigames():
     return render_template("minigames/mainMinigames.html")
 
-@app.route("/minigames/wordle")
+@app.route("/wordle")
 def wordle():
     return render_template("minigames/wordle.html")
 
-@app.route("/minigames/memory")
-def memory():
-    return render_template("minigames/memory.html")
+
+@app.route("/minigames/memoryGame")
+def memory_game():
+    return render_template("minigames/memoryGame.html")
 
 # --- API: Reset score when page is exited -----------------------------------
 @app.route("/reset_score", methods=["POST"])
