@@ -47,6 +47,7 @@ header {
 	margin-right: auto;
 	flex-wrap: wrap;
 	transform: translateY(-50%);
+	box-shadow:0 8px 16px 0 rgba(0,0,0,0.6)
 }
 
 hr {
@@ -75,5 +76,6 @@ hr {
     font-weight: bold;
     cursor: pointer;
     margin-right: 5%;
-	font-size: clamp(14px, 2vw, 20px)
+	font-size: clamp(14px, 2vw, 20px);
+	box-shadow:0 8px 16px 0 rgba(0,0,0,0.6);
 }
