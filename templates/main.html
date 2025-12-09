@@ -11,7 +11,10 @@
     <div class="navbar">
         <div class="user_profile_btn"></div>
         <div class="user_name">my name is</div>
-        <div class="game_name">HIGHER or LOWER</div>
+        <div class="center_group">
+            <div class="game_name">HIGHER or LOWER</div>
+            <div class="score_display">Score: {{ score }}</div>
+        </div>
         <div class="leaderboard_btn">LEADERBOARDS</div>
 
     </div>
@@ -21,22 +24,82 @@
             <div class="skin">
                 <img src="static/IMGS/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Tk5UvzWCL2kpn2-DFk_OKherB0H_eBC2Ke_uNztOh8QmexlkgktWjWw9iheHPGOgcoApV4E7YL50LsldLkMOq0tACPi4oTznj4kGoXuTa1_5_J.png" alt="">
             </div>
-            <div class="skin_text_box">
-                <p class="skin_text"> %price%</p>
 
+            <a href="/item1" data-preserve-score="true" onclick="window.__preserveScore=true">
+            <div class="skin_text_box">
+
+                <p class="skin_text"> {{ item1.market_hash_name }}<br></p>
+                <p class="skin_text"> {{ item1.price }} USD</p> <!-- DELETE LATER -->
             </div>
+            </a>
         </div>
 
         <div class="gamebox" style="margin: 3vw;"><!-- right box -->
             <div class="skin">
                 <img src="static/IMGS/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Tk5UvzWCL2kpn2-DFk_OKherB0H_eBC2Ke_uNztOh8QmexlkgktWjWw9iheHPGOgcoApV4E7YL50LsldLkMOq0tACPi4oTznj4kGoXuTa1_5_J.png" alt="">
             </div>
+
+            <a href="/item2" data-preserve-score="true" onclick="window.__preserveScore=true">
+
             <div class="skin_text_box">
-                <p class="skin_text"> %price%</p>
+                <p class="skin_text"> {{ item2.market_hash_name }}<br></p>
+                <p class="skin_text"> {{ item2.price }} USD</p> <!-- DELETE LATER -->
 
             </div>
+            </a>
         </div>
-`   </div>
+        </div>
+
+    <script>
+        (function(){
+            let preserveScore = false;
+
+            // Clicks on guess links should NOT reset the score
+            const guessLinks = document.querySelectorAll('a[data-preserve-score="true"]');
+            guessLinks.forEach(a => a.addEventListener('click', () => { preserveScore = true; }));
+
+            // Also set the flag as early as possible on pointerdown/mousedown in capture phase
+            function markPreserveIfGuessLink(ev){
+                const t = ev.target;
+                if (t && typeof t.closest === 'function') {
+                    const link = t.closest('a[data-preserve-score="true"]');
+                    if (link) {
+                        window.__preserveScore = true;
+                        preserveScore = true;
+                    }
+                }
+            }
+            document.addEventListener('pointerdown', markPreserveIfGuessLink, { capture: true });
+            document.addEventListener('mousedown', markPreserveIfGuessLink, { capture: true });
+
+            function sendReset() {
+                if (preserveScore || window.__preserveScore) return;
+                const url = '/reset_score';
+                try {
+                    if (navigator.sendBeacon) {
+                        const blob = new Blob([], { type: 'text/plain' });
+                        navigator.sendBeacon(url, blob);
+                    } else if (window.fetch) {
+                        fetch(url, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'text/plain' }, body: '' });
+                    } else {
+                        // Last-resort fallback
+                        const i = new Image();
+                        i.src = url;
+                    }
+                } catch (e) {
+                    // swallow
+                }
+            }
+
+            // Trigger when the document becomes hidden or the page is being unloaded
+            window.addEventListener('pagehide', sendReset);
+            document.addEventListener('visibilitychange', function(){
+                if (document.visibilityState === 'hidden') {
+                    sendReset();
+                }
+            });
+        })();
+    </script>
 
 </body>
 </html>
