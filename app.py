@@ -215,10 +215,6 @@ def quiz():
 def faq():
     return render_template("faq.html")
 
-@app.route("/guide")
-def guide():
-    return render_template("guide.html")
-
 # Minigames
 @app.route("/minigames")
 def minigames():

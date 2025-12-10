@@ -40,6 +40,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     margin: 0;
+    padding-left: 2%;
 }
 .score_display {
     color: #ffffff;
@@ -112,6 +113,8 @@ img {
 a {
     color: inherit;
     text-decoration: none;
+}
+
  #minigamesBtn, #guideBtn, #faqBtn {
     background-color: #ffd60a;
     border: 2px;
@@ -124,5 +127,4 @@ a {
     overflow: hidden;
     display: flex;
     margin-right: 2%;
-}
 }
