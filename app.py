@@ -83,12 +83,12 @@ def item1_click():
             if isinstance(last_right, dict):
                 session["next_left"] = last_right
         elif left < right:
-            # Wrong guess → reset score
+            # Wrong guess -> reset score
             session["score"] = 0
             # Clear any carry so next is fully random
             session.pop("next_left", None)
         else:
-            # Tie → no change, but treat next as random
+            # Tie -> no change, but treat next as random
             session.pop("next_left", None)
     return redirect(url_for("index"))
 
@@ -118,12 +118,12 @@ def item2_click():
             if isinstance(last_right, dict):
                 session["next_left"] = last_right
         elif right < left:
-            # Wrong guess → reset score
+            # Wrong guess -> reset score
             session["score"] = 0
             # Clear any carry so next is fully random
             session.pop("next_left", None)
         else:
-            # Tie → no change, but treat next as random
+            # Tie -> no change, but treat next as random
             session.pop("next_left", None)
     return redirect(url_for("index"))
 @app.route("/leaderboard")
