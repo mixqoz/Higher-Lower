@@ -49,7 +49,7 @@ p {
 	font-size: clamp(15px, 5vw, 25px);
 }
 
-.startBtn {
+#startBtn {
 	margin-top: 2%;
 	color: #000814;
 	font-size: clamp(14px, 2vw, 20px);
@@ -63,4 +63,98 @@ p {
 	flex-wrap: wrap;
 	box-shadow:0 8px 16px 0 rgba(0,0,0,0.6);
 	letter-spacing: 2px;
+}
+
+.modalContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 2;
+	opacity: 0;
+	pointer-events: none;
+	transition: 0.3s ease;
+}
+
+.modalContainer.show {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.modalHeader {
+	text-align: center;
+	position: relative;
+}
+
+
+.modal {
+	background-color: #fff;
+	width: 800px;
+	max-width: 100%;
+	padding: 30px 50px;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgb(0, 0, 0, 0.3);
+	text-align: center;
+}
+
+.modal h1{
+	margin: 0;
+	font-weight: 600;
+	font-weight: 25px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #333;
+}
+
+.modal h2 {
+	font-weight: 25px;
+}
+
+#closeBtn {
+    position: absolute;
+    left: 2%;
+    top: 20%;
+    transform: translateY(-50%);
+}
+
+.modalBody {
+	padding: 20px 0;
+}
+
+
+
+.btn {
+	background: #fff;
+	color: #222;
+	font-weight: 500;
+	width: 100%;
+	border: 1px solid #222;
+	padding: 10px;
+	margin: 7px 0;
+	text-align: left;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.btn:hover {
+	background: #222;
+	color: #fff;
+}
+
+#nextBtn {
+	background-color: #001e4d;
+	color: #fff;
+	font-weight: 500;
+	width: 150px;
+	border: 0;
+	padding: 10px;
+	margin: 20px auto 0;
+	border-radius: 4px;
+	cursor: pointer;
+	display: none;
 }

@@ -80,3 +80,22 @@ const questions = [
 		correctOption: "optionB",
 	}
 ]
+
+// Script from: https://www.youtube.com/watch?v=XH5OW46yO8I
+
+const startBtn = document.getElementById("startBtn");
+const modal_Container = document.getElementById("modal_Container");
+const closeBtn = document.getElementById("closeBtn");
+const questionElement = document.getElementById("question");
+const answerButton = document.getElementById("answerBtn");
+const nextButton = document.getElementById("nextBtn");
+
+startBtn.addEventListener("click", () => {
+	modal_Container.classList.add("show");
+});
+
+closeBtn.addEventListener("click", () => {
+	modal_Container.classList.remove("show");
+});
+
+
