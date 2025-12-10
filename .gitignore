@@ -216,3 +216,4 @@ __marimo__/
 .streamlit/secrets.toml
 csgo_prices.json
 compose.yml
+leaderboard.json

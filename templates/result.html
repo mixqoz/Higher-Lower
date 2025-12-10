@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Result</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <link rel="test image" href="{{url_for('static', filename='static/IMGS/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Tk5UvzWCL2kpn2-DFk_OKherB0H_eBC2Ke_uNztOh8QmexlkgktWjWw9iheHPGOgcoApV4E7YL50LsldLkMOq0tACPi4oTznj4kGoXuTa1_5_J.png')}}">
 </head>
@@ -20,7 +20,34 @@
         <div class="leaderboard_btn">LEADERBOARDS</div>
     </div>
 
+    <div class="parent">
+    <div class="gamebox" style="display:flex; flex-direction:column; align-items:center; gap: 1rem; padding: 2rem;">
+        <h1>Game Over</h1>
+        <p class="score_display">Your score: {{ score }}</p>
+        <form method="post" action="{{ url_for('result') }}" style="display:flex; flex-direction:column; gap: 0.5rem; align-items:center;">
+            <label for="username">Enter your name:</label>
+            <input type="text" id="username" name="username" placeholder="Your name" maxlength="40" required>
+            <input type="hidden" name="score" value="{{ score }}">
+            <button type="submit">Submit to Leaderboard</button>
+        </form>
+        <div style="margin-top:1rem; display:flex; gap:1rem;">
+            <a class="button_like" href="{{ url_for('index') }}">Play Again</a>
+            <a class="button_like" href="{{ url_for('leaderboard') }}">View Leaderboard</a>
+        </div>
+    </div>
+    </div>
 
+    <script>
+        document.getElementById("minigamesBtn").onclick = function () {
+            window.location.href = "{{ url_for('minigames') }}";
+        };
+        document.getElementById("guideBtn").onclick = function () {
+            window.location.href = "{{ url_for('guide') }}";
+        };
+        document.getElementById("faqBtn").onclick = function () {
+            window.location.href = "{{ url_for('faq') }}";
+        };
+    </script>
 
 
 

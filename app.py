@@ -4,6 +4,7 @@ from api import getrandomitem
 import os
 from dotenv import load_dotenv
 import json
+import time
 
 load_dotenv()
 
@@ -13,6 +14,10 @@ app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 # Required for using sessions
 app.secret_key = os.getenv(SECRET_KEY, DEFAULT_SECRET_KEY)
+
+if not os.path.exists("leaderboard.json"):
+    with open("leaderboard.json", "w", encoding="utf-8") as f:
+        json.dump([], f, indent=2)
 
 def _get_image(market_hash_name: str):
     return f"https://api.steamapis.com/image/item/730/{market_hash_name}"
@@ -68,18 +73,16 @@ def index():
         image2=_get_image(right_item.get("market_hash_name", "")),
     )
 
-# Clicking either item should increment the score by 1 and load new items
 @app.route("/item1")
 def item1_click():
-    # Correct if LEFT item has higher price than RIGHT
+    # Correct if item on left has higher price than right
     pair = session.get("pair")
     left = right = None
     if pair and isinstance(pair, dict):
         left = pair.get("left_price")
         right = pair.get("right_price")
 
-    # Server-side safeguard: if prices missing (e.g., due to race with /reset_score),
-    # reconstruct from last shown items.
+    # Server-side safeguard: if prices missing, reconstruct from last shown items (shit got fucky wucky beforehand)
     if not isinstance(left, (int, float)) or not isinstance(right, (int, float)):
         last_left = session.get("last_left_item")
         last_right = session.get("last_right_item")
@@ -94,20 +97,29 @@ def item1_click():
             last_right = session.get("last_right_item")
             if isinstance(last_right, dict):
                 session["next_left"] = last_right
+            return redirect(url_for("index"))
         elif left < right:
-            # Wrong guess -> reset score
-            session["score"] = 0
-            # Clear any carry so next is fully random
-            session.pop("next_left", None)
+            # Wrong guess -> if score > 0 go to results, else just restart
+            current_score = session.get("score", 0)
+            if current_score > 0:
+                session["final_score"] = current_score
+                # Clear any carry so next is fully random on a new game
+                session.pop("next_left", None)
+                return redirect(url_for("result"))
+            else:
+                session["score"] = 0
+                session.pop("next_left", None)
+                return redirect(url_for("index"))
         else:
             # Tie -> no change, but treat next as random
             session.pop("next_left", None)
+            return redirect(url_for("index"))
     return redirect(url_for("index"))
 
 
 @app.route("/item2")
 def item2_click():
-    # Correct if RIGHT item has higher price than LEFT
+    # Correct if item on right has higher price than left
     pair = session.get("pair")
     left = right = None
     if pair and isinstance(pair, dict):
@@ -129,22 +141,71 @@ def item2_click():
             last_right = session.get("last_right_item")
             if isinstance(last_right, dict):
                 session["next_left"] = last_right
+            return redirect(url_for("index"))
         elif right < left:
-            # Wrong guess -> reset score
-            session["score"] = 0
-            # Clear any carry so next is fully random
-            session.pop("next_left", None)
+            # Wrong guess -> if score > 0 go to results, else just restart
+            current_score = session.get("score", 0)
+            if current_score > 0:
+                session["final_score"] = current_score
+                # Clear any carry so next is fully random on a new game
+                session.pop("next_left", None)
+                return redirect(url_for("result"))
+            else:
+                session["score"] = 0
+                session.pop("next_left", None)
+                return redirect(url_for("index"))
         else:
             # Tie -> no change, but treat next as random
             session.pop("next_left", None)
+            return redirect(url_for("index"))
     return redirect(url_for("index"))
 @app.route("/leaderboard")
 def leaderboard():
     return render_template("leaderboard.html")
 
-@app.route("/result")
+@app.route("/result", methods=["GET", "POST"])
 def result():
-    return render_template("result.html")
+    # Save leaderboard entry on POST
+    if request.method == "POST":
+        username = request.form.get("username", "").strip() or "Anonymous"
+        score = session.get("final_score")
+
+        entry = {
+            "username": username,
+            "score": int(score),
+            "date": int(time.time()),
+        }
+
+        data = []
+        try:
+            with open("leaderboard.json", "r", encoding="utf-8") as f:
+                data = json.load(f)
+                if not isinstance(data, list):
+                    data = []
+        except FileNotFoundError:
+            data = []
+        except json.JSONDecodeError:
+            data = []
+
+        data.append(entry)
+        with open("leaderboard.json", "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
+
+        # Reset entire session
+        session["score"] = 0
+        session.pop("final_score", None)
+        session.pop("next_left", None)
+        session.pop("pair", None)
+        session.pop("last_left_item", None)
+        session.pop("last_right_item", None)
+
+        return redirect(url_for("leaderboard"))
+
+    # GET: show result page with final score, if statement to make sure someone doesn't just go to /result without playing
+    if not session.get("final_score"):
+        return redirect(url_for("index"))
+
+    return render_template("result.html", score=session.get("final_score"))
 
 @app.route("/quiz")
 def quiz():
