@@ -1,11 +1,17 @@
 import flask
 from flask import Flask, render_template, request, redirect, url_for, session
 from api import getrandomitem
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+
+SECRET_KEY = "SECRET_KEY"
+DEFAULT_SECRET_KEY = "change-me-in-production"
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 # Required for using sessions
-app.secret_key = "change-me-in-production"
+app.secret_key = os.getenv(SECRET_KEY, DEFAULT_SECRET_KEY)
 
 def _pick_valid_pair(max_attempts: int = 50):
     # Returns a tuple: (item1, item2, price1_float, price2_float)
@@ -36,7 +42,7 @@ def index():
     carried_left = session.get("next_left")
     if isinstance(carried_left, dict):
         left_item = carried_left
-        left_price = float(left_item.get("price")) or 0.0
+        left_price = float(left_item.get("price"))
         right_item, right_price = _pick_valid_item()
         # one-time carry
         session.pop("next_left", None)
@@ -48,12 +54,7 @@ def index():
     session["last_left_item"] = left_item
     session["last_right_item"] = right_item
 
-    return render_template("main.html", item1=left_item, item2=right_item, score=session["score"]) 
-
-@app.route("/higher")
-def higher():
-    return render_template("main.html")
-
+    return render_template("main.html", item1=left_item, item2=right_item, score=session["score"])
 
 # Clicking either item should increment the score by 1 and load new items
 @app.route("/item1")
