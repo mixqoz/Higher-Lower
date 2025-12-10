@@ -83,7 +83,7 @@ body {
     height: 60vh;
 }
 img {
-    max-width: 100%;
+    width: 40vh;
     height: auto;
 }
 .skin{
@@ -91,7 +91,9 @@ img {
     justify-content: center;
     align-items: flex-start;
     height: 70%;
-    object-fit: contain;    
+    object-fit: contain;
+    margin: 40px;
+
 }
 .skin_text_box {
     display: flex;
@@ -104,6 +106,7 @@ img {
     background-color: #FFC300;
     margin: 5vh;
     z-index: 5;
+    text-align: center;
 }
 
 a {

@@ -25,28 +25,28 @@
     <div class="parent">
         <div class="gamebox" style="margin: 3vw;"><!-- left box -->
             <div class="skin">
-                <img src="{{ url_for('static', filename='IMGS/greenGloves.png') }}" alt="">
+                <img src="{{ image1 }}" alt="{{ item1.market_hash_name }}">
             </div>
 
             <a href="/item1" data-preserve-score="true" onclick="window.__preserveScore=true">
             <div class="skin_text_box">
 
                 <p class="skin_text"> {{ item1.market_hash_name }}<br></p>
-                <p class="skin_text"> {{ item1.price }} USD</p> <!-- DELETE LATER -->
+                <!-- p class="skin_text"> {{ item1.price }} USD</p --> <!-- DELETE LATER -->
             </div>
             </a>
         </div>
 
         <div class="gamebox" style="margin: 3vw;"><!-- right box -->
             <div class="skin">
-                <img src="{{ url_for('static', filename='IMGS/greenGloves.png') }}" alt="">
+                <img src="{{ image2 }}" alt="{{ item2.market_hash_name }}">
             </div>
 
             <a href="/item2" data-preserve-score="true" onclick="window.__preserveScore=true">
 
             <div class="skin_text_box">
                 <p class="skin_text"> {{ item2.market_hash_name }}<br></p>
-                <p class="skin_text"> {{ item2.price }} USD</p> <!-- DELETE LATER -->
+                <!-- p class="skin_text"> {{ item2.price }} USD</p --> <!-- DELETE LATER -->
 
             </div>
             </a>
@@ -103,11 +103,6 @@
             });
         })();
     </script>
-    </div>
-    <div class="share_btn">SHARE your score</div>
-    <div class="score_circle">
-        <div class="score">0</div>
-    </div>
 
    <script>
         // Redirects to Minigames page when button is clicked

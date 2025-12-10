@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from api import getrandomitem
 import os
 from dotenv import load_dotenv
+import json
 
 load_dotenv()
 
@@ -13,7 +14,11 @@ app.config["DEBUG"] = True
 # Required for using sessions
 app.secret_key = os.getenv(SECRET_KEY, DEFAULT_SECRET_KEY)
 
-def _pick_valid_pair(max_attempts: int = 50):
+def _get_image(market_hash_name: str):
+    return f"https://api.steamapis.com/image/item/730/{market_hash_name}"
+
+
+def _pick_valid_pair():
     # Returns a tuple: (item1, item2, price1_float, price2_float)
     item1 = getrandomitem()
     item2 = getrandomitem()
@@ -54,7 +59,14 @@ def index():
     session["last_left_item"] = left_item
     session["last_right_item"] = right_item
 
-    return render_template("main.html", item1=left_item, item2=right_item, score=session["score"])
+    return render_template(
+        "main.html",
+        item1=left_item,
+        item2=right_item,
+        score=session["score"],
+        image1=_get_image(left_item.get("market_hash_name", "")),
+        image2=_get_image(right_item.get("market_hash_name", "")),
+    )
 
 # Clicking either item should increment the score by 1 and load new items
 @app.route("/item1")
@@ -130,6 +142,10 @@ def item2_click():
 def leaderboard():
     return render_template("leaderboard.html")
 
+@app.route("/result")
+def result():
+    return render_template("result.html")
+
 @app.route("/quiz")
 def quiz():
     return render_template("quiz.html")
@@ -173,4 +189,5 @@ def reset_score():
     return ("", 204)
 
 if __name__ == "__main__":
+    _get_image("1st Lieutenant Farlow | SWAT")
     app.run()
