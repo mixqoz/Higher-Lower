@@ -18,11 +18,12 @@
     <div class="gameBtns">
 		  <button id="wordle">Wordle</button>
       <button id="memory">Memory</button>
+      <button id="quiz">Quiz</button>
 	  </div>
 
     <script>
       document.getElementById("backBtn").onclick = function () {
-			window.location.href = "{{ url_for('minigames') }}";
+			window.location.href = "{{ url_for('index') }}";
 	  	};
       
       // Directs you to the Wordle page
@@ -33,6 +34,11 @@
       // Directs you to the Memory page
       document.getElementById("memory").onclick = function () {
 			window.location.href = "{{ url_for('memory_game') }}";
+		  };
+
+      // Directs you to the Quiz page
+      document.getElementById("quiz").onclick = function () {
+			window.location.href = "{{ url_for('quiz') }}";
 		  };
     </script>
 </body>
