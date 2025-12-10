@@ -40,14 +40,11 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<script>
-	document.addEventListener("DOMContentLoaded", () => {
-		const backBtn = document.getElementById("backBtn");
-		backBtn.addEventListener("click", () => {
-			window.location.href = "{{ url_for('minigames') }}";
-		});
-	});
+		document.getElementById("backBtn").onclick = function () {
+			window.location.href = "{{ url_for('index') }}";
+	  	};
 	</script>
 </body>
 </html>

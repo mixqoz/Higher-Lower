@@ -3,9 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{ url_for('static', filename='faq.css') }}">
 	<title>Frequently Asked Questions</title>
 </head>
 <body>
-	
+	<header>
+		<button id="backBtn">Back</button>
+		<h1 class="title"><u>Frequently Asked Questions</u></h1>
+	</header>
+	<section>
+		<h2></h2>
+	</section>
+
+	<br>
+	<hr>
+
+	<script>
+		document.getElementById("backBtn").onclick = function () {
+			window.location.href = "{{ url_for('index') }}";
+	  	};
+	</script>
 </body>
 </html>
