@@ -109,6 +109,10 @@ img {
     z-index: 5;
     text-align: center;
 }
+.skin_text{
+    text-align: center;
+    font-size: 5rem, 3rem;
+}
 
 a {
     color: inherit;

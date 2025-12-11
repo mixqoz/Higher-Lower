@@ -246,7 +246,9 @@ def reset_score():
     # Optionally clear carry-over so a fresh chain starts after exit.
     session.pop("next_left", None)
     return ("", 204)
-
+@app.route("/login")
+def llgin():
+    return render_template("login.html")
 if __name__ == "__main__":
     _get_image("1st Lieutenant Farlow | SWAT")
     app.run()
