@@ -14,6 +14,8 @@ app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 # Required for using sessions
 app.secret_key = os.getenv(SECRET_KEY, DEFAULT_SECRET_KEY)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+
 
 if not os.path.exists("leaderboard.json"):
     with open("leaderboard.json", "w", encoding="utf-8") as f:

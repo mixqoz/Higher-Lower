@@ -11,17 +11,44 @@
 		<button id="backBtn">Back</button>
 		<h1 class="title"><u>Frequently Asked Questions</u></h1>
 	</header>
-	<section>
-		<h2></h2>
-	</section>
 
 	<br>
 	<hr>
 
+	<section>
+		<!-- First Question-->
+		<button type="button" class="collapsible">What is this website?</button>
+		<div class="content">
+			<p>Higher, Lower means to take your CS:GO expertise to play and guess which CS:GO2 item is worth more than the other. We have leaderboards displaying every users score, as well as other games to play, suitable for all kinds of Counter Strike 2 players.</p>
+		</div>
+
+		<button type="button" class="collapsible">How does it work?</button>
+		<div class="content">
+			<p>Csfloat</p>
+		</div>
+	</section>
+	
 	<script>
+		// Redirects back to the main page (index) when Back Button is clicked
 		document.getElementById("backBtn").onclick = function () {
 			window.location.href = "{{ url_for('index') }}";
 	  	};
+
+
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+
+		for (i = 0; i < coll.length; i++) {
+		coll[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var content = this.nextElementSibling;
+			if (content.style.display === "block") {
+			content.style.display = "none";
+			} else {
+			content.style.display = "block";
+			}
+		});
+		}
 	</script>
 </body>
 </html>
