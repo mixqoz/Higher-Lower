@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000814;
+    margin: 0;
+    overflow: hidden;
+}
+.main_box {
+    background-color:#0c1047 ;
+    display: flex;
+    width: 40vw;
+    height: 60vh;
+    margin-top: 15vh;
+    margin-left: 30vw;
+    border: 10px #FFC300;
+}
