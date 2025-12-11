@@ -69,7 +69,7 @@ It is up to the user if they want to continually update the file by running the 
 2. Copy the provided example file,
 
     ```
-    mv compose.example.yml compose.yml
+    mv compose.yml.example compose.yml
     ```
    
     and then modify the `SECRET_KEY` environment variable:
