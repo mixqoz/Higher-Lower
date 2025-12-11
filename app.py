@@ -161,9 +161,13 @@ def item2_click():
             session.pop("next_left", None)
             return redirect(url_for("index"))
     return redirect(url_for("index"))
+
 @app.route("/leaderboard")
 def leaderboard():
-    return render_template("leaderboard.html")
+    with open("leaderboard.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+    sorted_data = sorted(data, key=lambda x: (-x['score'], -x['date']))
+    return render_template("leaderboard.html", leaderboardjson=sorted_data, maxloops=6)
 
 @app.route("/result", methods=["GET", "POST"])
 def result():

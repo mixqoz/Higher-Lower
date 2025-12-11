@@ -20,15 +20,22 @@
                 <h1>Top Scores</h1>
             </div>
             <ol>
-                <li>
-                    <div class="name_box"></div>
-                    <div class="score_box"></div>
-                </li>
-                <!-- IF NO LEADERBOARD ENTRIES FOUND, SHOW THIS INSTEAD (WITH AN IF STATEMENT)-->
+                {% if not leaderboardjson %}
                 <li>
                     <div class="name_box">No entries yet</div>
                     <div class="score_box">0</div>
                 </li>
+                {% else %}
+                {% for item in leaderboardjson %}
+
+                <li>
+                    <div class="name_box">{{ item.username }}</div>
+                    <div class="score_box">{{ item.score }}.</div>
+                </li>
+                {% endfor %}
+                {% endif %}
+                <!-- IF NO LEADERBOARD ENTRIES FOUND, SHOW THIS INSTEAD (WITH AN IF STATEMENT)-->
+
             </ol>
         </div>
     </div>
